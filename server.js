@@ -78,6 +78,10 @@ const app = express();
 //     console.log(err);
 // }
 
+app.use('/', (req, res) => {
+    res.send('hello')
+})
+
 app.listen(process.env.PORT, () => {
-    console.log('hello');
+    // console.log('hello');
 })
