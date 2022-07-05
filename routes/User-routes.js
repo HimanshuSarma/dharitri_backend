@@ -16,7 +16,11 @@ router.post('/signup', async(req, res, next) => {
                 res.status(409).json({ message: 'User already exists' });
             } else if (checkUser.length === 0) {
                 const password = await bcrypt.hash(req.body.password, 10);
-                const user = new UserModels.CustomerSchema({...req.body, password });
+                const user = new UserModels.CustomerSchema({...req.body,
+                    phone_number: parseInt(req.body.phone_number),
+                    pincode: parseInt(req.body.pincode),
+                    password
+                });
                 const response = await user.save();
                 if (req.cookies.jwt) {
                     res.status(200).clearCookie('jwt').json({
@@ -62,7 +66,11 @@ router.post('/login', async(req, res, next) => {
         if (!req.body.phone_number || !req.body.name || !req.body.password) {
             res.status(401).json({ message: 'Please fill out all the input field to log in' });
         } else {
-            const userFetchFromDB = await UserModels.CustomerSchema.find({ name: req.body.name, phone_number: req.body.phone_number });
+            const userFetchFromDB = await UserModels.CustomerSchema.find({
+                name: req.body.name,
+                phone_number: parseInt(req.body.phone_number)
+            });
+
             if (userFetchFromDB.length === 0) {
                 // Condition when the login credentials are incorrect...
                 res.status(401).json({ message: 'Login credentials incorrect' });
