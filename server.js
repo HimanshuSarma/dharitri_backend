@@ -63,8 +63,6 @@ app.use('/', ProductRoutes.router);
 
 app.use('/', userTokenVerification.router, CartRoutes.router);
 
-app.use(express.static('./frontend/build'));
-
 try {
     mongoose.connect(process.env.MONGO_DB_CONNECTION_URI, () => {
         console.log('Connected to database');
