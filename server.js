@@ -67,7 +67,7 @@ try {
     mongoose.connect(process.env.MONGO_DB_CONNECTION_URI, () => {
         console.log('Connected to database');
         try {
-            app.listen(process.env.SERVER_PORT_NO || 3000, () => {
+            app.listen(process.env.PORT || 3000, () => {
                 console.log(`Server running at port ${process.env.PORT || 3000}`)
             })
         } catch (err) {
