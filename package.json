@@ -1,7 +1,8 @@
 {
     "scripts": {
         "start": "node server.js",
-        "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client npm && npm run build"
+        "heroku-postbuild": "npm run build",
+        "build": "npm run build"
     },
     "dependencies": {
         "bcrypt": "^5.0.1",
