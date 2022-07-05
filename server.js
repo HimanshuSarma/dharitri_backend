@@ -1,6 +1,6 @@
 // require('dotenv').config();
 // const bodyParser = require('body-parser');
-// const express = require('express');
+const express = require('express');
 // const mongoose = require('mongoose');
 // const cookieParser = require('cookie-parser');
 // const CORS = require('cors');
@@ -13,7 +13,7 @@
 // const CartRoutes = require('./routes/Cart-routes');
 // const userTokenVerification = require('./Verification/userTokenVerifications');
 
-// const app = express();
+const app = express();
 
 // // CORS Headers => Required for cross-origin/ cross-server communication
 // // app.use((req, res, next) => {
