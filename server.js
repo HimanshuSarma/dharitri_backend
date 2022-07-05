@@ -64,7 +64,7 @@ app.use('/', ProductRoutes.router);
 app.use('/', userTokenVerification.router, CartRoutes.router);
 
 try {
-    mongoose.connect("mongodb://Dharitri:JPd3WI7os0dUAai6@ac-67gh741-shard-00-00.rucrw9u.mongodb.net:27017,ac-67gh741-shard-00-01.rucrw9u.mongodb.net:27017,ac-67gh741-shard-00-02.rucrw9u.mongodb.net:27017/?ssl=true&replicaSet=atlas-36if4d-shard-0&authSource=admin&retryWrites=true&w=majority", () => {
+    mongoose.connect(process.env.MONGO_DB_CONNECTION_URI, () => {
         console.log('Connected to database');
         try {
             app.listen(process.env.PORT || 3000, () => {
